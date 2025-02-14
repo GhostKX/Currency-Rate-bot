@@ -4,11 +4,13 @@ from dotenv import load_dotenv
 import os
 
 
+# Load environment variables from the .env file
 load_dotenv()
 API_KEY = str(os.getenv('API_KEY'))
 bot = telebot.TeleBot(API_KEY)
 
 
+# Handler for the '/start' command
 @bot.message_handler(commands=['start'])
 def start_bot(message):
     user_id = message.from_user.id
@@ -21,6 +23,7 @@ def start_bot(message):
     bot.register_next_step_handler(message, text)
 
 
+# Function to handle user input for currency conversion options
 def text(message, exchange=None):
     user_id = message.from_user.id
     if message.text == 'Back':
@@ -34,6 +37,7 @@ def text(message, exchange=None):
         bot.register_next_step_handler(message, convert_usd_to_uzs, user_id)
 
 
+# Function to convert UZS to USD based on user input
 def convert_uzs_to_usd(message, user_id):
     if message.text.isdigit():
         uzd_amount = float(message.text) / 12648.00
@@ -49,6 +53,7 @@ def convert_uzs_to_usd(message, user_id):
         bot.register_next_step_handler(user_id, text)
 
 
+# Function to convert USD to UZS based on user input
 def convert_usd_to_uzs(message):
     user_id = message.from_user.id
     if message.text.isdigit:
@@ -67,4 +72,5 @@ def convert_usd_to_uzs(message):
         bot.register_next_step_handler(message.chat.id, convert_usd_to_uzs)
 
 
+# Start the bot with an infinite polling loop
 bot.infinity_polling()
