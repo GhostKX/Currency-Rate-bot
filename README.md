@@ -63,6 +63,56 @@ python PythonCurrencyBot.py
   - **‼️ Delete**: Delete an existing user from the database.
 - Users can navigate through the registration steps, providing their first name, last name, email, and phone number.
 
+
+## Example Usage Scenario
+
+### User Registration
+```
+User: /start
+
+Bot: Welcome to Currency Exchange bot!
+
+[📝 Register]  [‼️ Delete]
+
+User: 📝 Register
+Bot: 💬 Please type in First Name 💬
+
+User: John
+Bot: 💬 Please type in your Last Name 💬
+
+User: Doe
+Bot: 📩 Please type in Email address 📩
+
+User: john.doe@email.com
+Bot: 📞 Please share your contact 📞
+
+User: [Shares contact]
+Bot: 🎉 Congratulations, John Doe! 🎉
+Your registration is complete!
+```
+
+### Currency Conversion
+```
+User: /start
+
+Bot: Welcome to Currency Exchange bot!
+
+[📝 Register]  [‼️ Delete]
+
+User: UZS > USD($)
+Bot: 💵 Type in UZS amount 💵
+
+User: 100000
+Bot: UZS: 100000.00 > USD: $7.89
+
+User: USD($) > UZS
+Bot: 💵 Type in USD amount 💵
+
+User: 10
+Bot: USD: $10.00 > UZS: 126487.50
+```
+
+
 ### Currency Conversion
 - **UZS to USD**: Select **"UZS > USD($)"** to convert from UZS to USD.
 - **USD to UZS**: Select **"USD($) > UZS"** to convert from USD to UZS.
